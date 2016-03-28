@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>GUISO</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="s.css">
+        <link href='https://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="jq.js"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <video autoplay id="bgvid">
+                <source src="guiso.mp4" type="video/mp4">
+            </video>
+            <div id="container">
+                <div id="countdown">
+                </div>
+            </div>
+        </div>
+        <script>
+        var end = new Date('04/09/2016 11:59 AM');
+
+            var _second = 1000;
+            var _minute = _second * 60;
+            var _hour = _minute * 60;
+            var _day = _hour * 24;
+            var timer;
+
+            function showRemaining() {
+                var now = new Date();
+                var distance = end - now;
+                if (distance < 0) {
+
+                    clearInterval(timer);
+                    document.getElementById('countdown').innerHTML = 'EXPIRED!';
+
+                    return;
+                }
+                var days = Math.floor(distance / _day);
+                var hours = Math.floor((distance % _day) / _hour);
+                var minutes = Math.floor((distance % _hour) / _minute);
+                var seconds = Math.floor((distance % _minute) / _second);
+
+                document.getElementById('countdown').innerHTML = days + ' días <br>';
+                document.getElementById('countdown').innerHTML += hours + ' horas <br>';
+                document.getElementById('countdown').innerHTML += minutes + ' minutos <br>';
+                document.getElementById('countdown').innerHTML += seconds + ' segundos <br>';
+            }
+
+            timer = setInterval(showRemaining, 1000);
+        </script>
+        <script>
+        var ismobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
+        if (ismobile) {
+            $('video').remove();
+            $('body').append('<p id="play">pulsa en cualquier sitio</p>');
+            $('#wrapper').append('<audio id="mp3" controls ><source src="audio.mp3" type="audio/mpeg" /><p class="error-message">Try another browser...</p></audio>');
+        $('body').on('click', function(){
+            if($('#mp3')[0].paused){
+                $('#mp3')[0].play();
+                $('#play').text('disfruta :)');
+            } else {
+                $('#mp3')[0].pause();
+                $('#play').text('pulsa en cualquier sitio');
+            }
+
+            });
+        };
+
+        </script>
+    </body>
+</html>

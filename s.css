@@ -1,0 +1,56 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+    font-family: 'Candal', sans-serif;
+
+}
+body {
+	background-image: url('pp.jpg');
+	background-size: cover;
+	backgound-repeat: no-repeat;
+}
+
+audio {
+	position:fixed;
+	opacity: 0;
+}
+
+
+video {
+	width: 100% !important ;
+	height: auto !important ;
+	position: fixed;
+	z-index: -99;
+	top: 0;
+	left: 0;
+}
+
+#play{
+	position: fixed;
+	top: 25%;
+	display: block;
+	left: 30%;
+	font-size: 2em;
+	color: #ffffff;
+}
+
+#wrapper {
+	display: table;
+	height: 100%;
+	overflow: hidden;
+	width: 100%;
+}
+
+#countdown {
+	font-size: 3em;
+	margin: 0 auto;
+	color: #ffffff;
+	text-shadow: 2px 2px 2px #606060;
+}
+
+#container {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
